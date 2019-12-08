@@ -16,6 +16,10 @@ Observer.prototype = {
             enumerable: true,
             configurable: true,
             get: function() {
+                console.log(Dep.target);
+                //Dep.target等于null的时候，是给模板赋值的时候
+                //此时还没有执行watcher，在执行watcher的时候才会再次
+                //调用get方法，此时就有了dep.target
                 if (Dep.target) {
                     dep.addSub(Dep.target);
                 }

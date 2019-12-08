@@ -18,6 +18,7 @@ Observer.prototype = {
             configurable: true,
             get: function getter () {
                 if (Dep.target) {
+                    console.log(Dep.target);
                     dep.addSub(Dep.target);
                 }
                 return val;

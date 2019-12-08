@@ -18,9 +18,12 @@ Watcher.prototype = {
         }
     },
     get: function() {
+        //console.log(this.vm);
         Dep.target = this;  // 缓存自己
         var value = this.vm.data[this.exp]  // 强制执行监听器里的get函数
         Dep.target = null;  // 释放自己
+        //console.log(value);
+        //value 是hello world；canfoo；canfoo；因为html中用到了1次title，2次name
         return value;
     }
 };
